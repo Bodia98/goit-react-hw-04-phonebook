@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormBookLabel, FormBookInput, SubmitBtn } from './FormStyled';
+import { Form, FormBookLabel, FormBookInput, SubmitBtn } from './FormContainerStyled';
 export const FormContainer = ({ contacts, addNewContact }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { nanoid } from 'nanoid';
 import { Box } from 'components/Box/Box';
-import { FormContainer } from 'components/Form/Form';
+import { FormContainer } from 'components/Form/FormContainer';
 import { SearchContainer } from 'components/Filter/Filter';
 import { ContactListContainer } from 'components/ContactList/ContactList';
 import { FormTitle, ContactTitle, SearchTitle } from './PhoneBooksStyled';
@@ -43,22 +43,24 @@ export const PhoneBook = () => {
     setContacts(contacts.filter(contact => contact.id !== e.target.id));
   };
 
-  const addNewContact = (contactName, contactNumber) => {
-    setContacts([
-      ...contacts,
-      ...[
-        {
-          name: contactName,
-          id: nanoid(),
-          number: contactNumber,
-        },
+  addNewContact = (contactName, contactNumber) => {
+    this.setState(prevState => ({
+      contacts: [
+        ...prevState.contacts,
+        ...[
+          {
+            name: contactName,
+            id: nanoid(),
+            number: contactNumber,
+          },
+        ],
       ],
-    ]);
+    }));
   };
-
+  
   const createArrayOfContacts = () => {
     if (filter !== '') {
-      return onFilterArray(contacts).map(contact => contact);
+      return onFilterArray(contacts);
     }
     return contacts;
   };
