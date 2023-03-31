@@ -43,8 +43,8 @@ export const PhoneBook = () => {
     setContacts(contacts.filter(contact => contact.id !== e.target.id));
   };
 
-  addNewContact = (contactName, contactNumber) => {
-    this.setState(prevState => ({
+  const addNewContact = (contactName, contactNumber) => {
+    setContacts(prevState => ({
       contacts: [
         ...prevState.contacts,
         ...[
@@ -57,6 +57,7 @@ export const PhoneBook = () => {
       ],
     }));
   };
+
   
   const createArrayOfContacts = () => {
     if (filter !== '') {
